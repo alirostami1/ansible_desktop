@@ -10,3 +10,20 @@
           - htop
           - tmux
           - neovim
+
+    - name: copy wall paper
+      copy:
+        src: files/wallpaper.jpg
+        dest: /usr/share/backgrounds/ansible-wallpaper.jpg
+        owner: root 
+        group: root
+
+    - name: set wallpaper
+      dconf:
+        key: "org/gnome/desktop/background/picture-uri"
+        value: "file:///usr/share/backgrounds/ansible-wallpaper.jpg"
+
+    - name: set wallpaper position
+      dconf:
+        key: "org/gnome/desktop/screensaver/lock-enabled"
+        value: "'zoom'"
